@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { Profile, AppRole } from "@/types/app";
+import { toast } from "@/components/ui/use-toast";
 
 interface AuthContextType {
   session: Session | null;
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      console.log("Auth state changed:", _event, session?.user?.email);
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
@@ -52,19 +54,30 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   async function fetchProfile(userId: string) {
     setIsLoading(true);
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
-    
-    if (error) {
-      console.error('Error fetching profile:', error);
-    } else {
-      setProfile(data as Profile);
+    try {
+      console.log("Fetching profile for user:", userId);
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
+      
+      if (error) {
+        console.error('Error fetching profile:', error);
+        toast({ 
+          title: "Error", 
+          description: "No se pudo cargar tu perfil. Por favor intenta de nuevo más tarde.", 
+          variant: "destructive" 
+        });
+      } else {
+        console.log("Profile data:", data);
+        setProfile(data as Profile);
+      }
+    } catch (error) {
+      console.error("Unexpected error fetching profile:", error);
+    } finally {
+      setIsLoading(false);
     }
-    
-    setIsLoading(false);
   }
 
   const isAdmin = profile?.role === 'admin';
