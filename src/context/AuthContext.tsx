@@ -68,7 +68,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         console.error('Error en la primera consulta de perfil:', error);
         
         // Si falló la primera consulta, intentamos una consulta más simple
-        // Nota: No usamos RPC ya que no está definida correctamente
         const { data: profileData, error: profileError } = await supabase
           .from('profiles')
           .select('*')

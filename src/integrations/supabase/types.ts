@@ -95,7 +95,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_profile_by_id: {
+        Args: {
+          user_id: string
+        }
+        Returns: {
+          created_at: string
+          full_name: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at: string
+        }
+      }
     }
     Enums: {
       app_role: "admin" | "guest"
