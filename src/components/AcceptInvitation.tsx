@@ -17,6 +17,7 @@ const AcceptInvitation = () => {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
+    console.log("Token capturado desde useParams:", token);
     const fetchInvitation = async () => {
       if (!token) return;
       
@@ -27,6 +28,9 @@ const AcceptInvitation = () => {
         .eq('token', token)
         .eq('accepted', false)
         .single();
+
+        
+  console.log("Supabase response:", { data, error });
       
       if (error) {
         console.error('Error fetching invitation:', error);
@@ -115,9 +119,9 @@ const AcceptInvitation = () => {
     <div className="flex min-h-screen items-center justify-center">
       <div className="mx-auto w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-md">
         <div className="text-center">
-          <h1 className="text-3xl font-bold">Accept Invitation</h1>
+          <h1 className="text-3xl font-bold">Aceptar Invitacion</h1>
           <p className="text-gray-600 mt-2">
-            You've been invited to join. Create your account below.
+          Has sido invitado a unirte. Crea tu cuenta a continuación.
           </p>
         </div>
         
@@ -138,28 +142,28 @@ const AcceptInvitation = () => {
             
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-                Full Name
+                Nombre Completo
               </label>
               <Input
                 id="fullName"
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                placeholder="Your full name"
+                placeholder="Tu nombre completo"
                 required
               />
             </div>
             
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
+                Contraseña
               </label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Create a password"
+                placeholder="Crea una contraseña"
                 required
               />
             </div>
@@ -170,7 +174,7 @@ const AcceptInvitation = () => {
             className="w-full" 
             disabled={submitting}
           >
-            {submitting ? "Creating Account..." : "Create Account"}
+            {submitting ? "Creando cuenta..." : "Crea tu cuenta"}
           </Button>
         </form>
       </div>

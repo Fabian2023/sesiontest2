@@ -58,6 +58,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       console.log("Fetching profile for user:", userId);
       
       // Primero intentamos con la consulta directa
+      // eslint-disable-next-line prefer-const
       let { data, error } = await supabase
         .from('profiles')
         .select('*')

@@ -31,6 +31,7 @@ const SignIn = () => {
       await signIn(email, password);
       console.log("Inicio de sesión exitoso");
       navigate("/");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error("Error al iniciar sesión:", error);
       
@@ -55,7 +56,7 @@ const SignIn = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="mx-auto w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-md">
+      <div className="mx-auto w-full max-w-md p-8 space-y-8 bg-gray-200 rounded-xl shadow-md">
         <div className="text-center">
           <h1 className="text-3xl font-bold">Iniciar Sesión</h1>
           <p className="text-gray-600 mt-2">Ingresa tus credenciales para continuar</p>
