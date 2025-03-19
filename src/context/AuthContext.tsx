@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       console.log("Fetching profile for user:", userId);
       
-      // Primero intentamos con la función directa
+      // Primero intentamos con la consulta directa
       let { data, error } = await supabase
         .from('profiles')
         .select('*')
@@ -67,9 +67,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (error) {
         console.error('Error en la primera consulta de perfil:', error);
         
-        // Si falla, intentemos con una consulta más simple
+        // Si falló la primera consulta, intentamos una consulta más simple
+        // Nota: No usamos RPC ya que no está definida correctamente
         const { data: profileData, error: profileError } = await supabase
-          .rpc('get_profile_by_id', { user_id: userId });
+          .from('profiles')
+          .select('*')
+          .eq('id', userId)
+          .single();
         
         if (profileError) {
           console.error('Error en la segunda consulta de perfil:', profileError);
