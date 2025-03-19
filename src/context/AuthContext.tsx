@@ -56,25 +56,68 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsLoading(true);
     try {
       console.log("Fetching profile for user:", userId);
-      const { data, error } = await supabase
+      
+      // Primero intentamos con la función directa
+      let { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single();
+        .maybeSingle();
       
       if (error) {
-        console.error('Error fetching profile:', error);
-        toast({ 
-          title: "Error", 
-          description: "No se pudo cargar tu perfil. Por favor intenta de nuevo más tarde.", 
-          variant: "destructive" 
-        });
-      } else {
+        console.error('Error en la primera consulta de perfil:', error);
+        
+        // Si falla, intentemos con una consulta más simple
+        const { data: profileData, error: profileError } = await supabase
+          .rpc('get_profile_by_id', { user_id: userId });
+        
+        if (profileError) {
+          console.error('Error en la segunda consulta de perfil:', profileError);
+          throw profileError;
+        }
+        
+        data = profileData;
+      }
+      
+      if (data) {
         console.log("Profile data:", data);
         setProfile(data as Profile);
+      } else {
+        console.warn("No se encontró perfil para el usuario:", userId);
+        // Si no hay perfil, pero tenemos un usuario autenticado, creamos uno básico
+        // Esto es útil si las políticas RLS no permiten acceder al perfil creado automáticamente
+        
+        const { error: insertError } = await supabase
+          .from('profiles')
+          .insert({ 
+            id: userId,
+            full_name: user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Usuario'
+          })
+          .select()
+          .single();
+          
+        if (insertError) {
+          console.error('Error al crear perfil:', insertError);
+        } else {
+          // Intentar obtener el perfil recién creado
+          const { data: newProfile } = await supabase
+            .from('profiles')
+            .select()
+            .eq('id', userId)
+            .maybeSingle();
+            
+          if (newProfile) {
+            setProfile(newProfile as Profile);
+          }
+        }
       }
     } catch (error) {
-      console.error("Unexpected error fetching profile:", error);
+      console.error("Error inesperado al obtener perfil:", error);
+      toast({ 
+        title: "Error", 
+        description: "No se pudo cargar tu perfil. Lo intentaremos más tarde.", 
+        variant: "destructive" 
+      });
     } finally {
       setIsLoading(false);
     }

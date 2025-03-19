@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -30,9 +31,18 @@ const SignIn = () => {
       await signIn(email, password);
       console.log("Inicio de sesión exitoso");
       navigate("/");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error al iniciar sesión:", error);
-      setError("Credenciales incorrectas. Por favor verifica tu email y contraseña.");
+      
+      // Mensajes de error más específicos
+      if (error.message?.includes("Invalid login credentials")) {
+        setError("Credenciales incorrectas. Por favor verifica tu email y contraseña.");
+      } else if (error.message?.includes("Email not confirmed")) {
+        setError("Tu email no ha sido confirmado. Por favor revisa tu bandeja de entrada.");
+      } else {
+        setError(`Error al iniciar sesión: ${error.message || "Intenta nuevamente más tarde"}`);
+      }
+      
       toast({ 
         title: "Error de inicio de sesión", 
         description: "No se pudo iniciar sesión. Por favor verifica tus credenciales.", 
@@ -53,9 +63,9 @@ const SignIn = () => {
         
         <form onSubmit={handleSignIn} className="mt-8 space-y-6">
           {error && (
-            <div className="p-3 bg-red-100 border border-red-300 text-red-700 rounded-md">
-              {error}
-            </div>
+            <Alert variant="destructive">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
           )}
           
           <div className="space-y-4">
