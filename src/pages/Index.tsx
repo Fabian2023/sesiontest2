@@ -29,12 +29,12 @@ const Index = () => {
 
   // If not authenticated, show welcome screen with option to sign in
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-300 to-white">
       {showSignIn ? (
         <SignIn />
       ) : (
-        <div className="text-center max-w-md px-6 py-10 bg-white rounded-lg shadow-lg">
-          <h1 className="text-4xl font-bold mb-4">Bienvenido a la Aplicación</h1>
+        <div className="text-center max-w-md px-6 py-10 bg-gray-200  rounded-lg shadow-lg">
+          <h1 className="text-4xl font-bold mb-4">InvitaPro</h1>
           <p className="text-xl text-gray-600 mb-8">Sistema de gestión de usuarios e invitaciones</p>
           
           <div className="space-y-4">

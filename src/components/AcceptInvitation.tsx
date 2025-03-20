@@ -112,12 +112,12 @@ const AcceptInvitation = () => {
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+    return <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-200 to-white">Loading...</div>;
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="mx-auto w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-md">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-blue-300 to-white">
+      <div className="mx-auto w-full max-w-md p-8 space-y-8 bg-gray-100 rounded-xl shadow-md">
         <div className="text-center">
           <h1 className="text-3xl font-bold">Aceptar Invitacion</h1>
           <p className="text-gray-600 mt-2">

@@ -55,7 +55,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-blue-300 to-white">
       <div className="mx-auto w-full max-w-md p-8 space-y-8 bg-gray-200 rounded-xl shadow-md">
         <div className="text-center">
           <h1 className="text-3xl font-bold">Iniciar Sesión</h1>
