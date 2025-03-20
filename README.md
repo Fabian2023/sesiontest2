@@ -1,10 +1,11 @@
-# InvitaPro  
+# ![InvitaPro](https://img.shields.io/badge/InvitaPro-007bff?style=for-the-badge&logo=appveyor)  
+
 
 **Sistema de gestión de usuarios e invitaciones**  
 
 InvitaPro es una aplicación web diseñada para administrar usuarios y gestionar invitaciones de manera eficiente y segura.  
 
-##  Características  
+## Características  
 - Registro y autenticación de usuarios  
 - Roles de administrador e invitado  
 - Gestión de invitaciones  
