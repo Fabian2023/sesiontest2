@@ -21,3 +21,11 @@ InvitaPro es una aplicación web diseñada para administrar usuarios y gestionar
    ```sh
    git clone https://github.com/Fabian2023/sesiontest2.git
    cd sesiontest2
+
+2. Instala dependencias:  
+   ```sh
+   npm install
+
+3. Inicia el servidor:  
+   ```sh
+   npm run dev
