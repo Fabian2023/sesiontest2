@@ -1,4 +1,7 @@
-# ![InvitaPro](https://img.shields.io/badge/InvitaPro-007bff?style=for-the-badge&logo=appveyor)  
+<h1 align="center">
+  <img src="https://img.shields.io/badge/InvitaPro-007bff?style=for-the-badge&logo=appveyor" alt="InvitaPro" width="250">
+</h1>
+
 
 
 **Sistema de gestión de usuarios e invitaciones**  
