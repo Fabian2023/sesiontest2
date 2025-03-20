@@ -26,6 +26,6 @@ InvitaPro es una aplicación web diseñada para administrar usuarios y gestionar
    ```sh
    npm install
 
-3. Inicia el servidor:  
+3. Inicia el servidor en el puerto 3000:  
    ```sh
    npm run dev
