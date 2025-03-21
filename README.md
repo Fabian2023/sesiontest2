@@ -1,69 +1,35 @@
-# Welcome to your Lovable project
+<h1 align="center">
+  <img src="https://img.shields.io/badge/InvitaPro-007bff?style=for-the-badge&logo=appveyor" alt="InvitaPro" width="250">
+</h1>
 
-## Project info
 
-**URL**: https://lovable.dev/projects/2a16dcae-15c6-4a27-a733-c00ce8c5ee12
 
-## How can I edit this code?
+**Sistema de gestión de usuarios e invitaciones**  
 
-There are several ways of editing your application.
+InvitaPro es una aplicación web diseñada para administrar usuarios y gestionar invitaciones de manera eficiente y segura.  
 
-**Use Lovable**
+## Características  
+- Registro y autenticación de usuarios  
+- Roles de administrador e invitado  
+- Gestión de invitaciones  
+- Seguridad con Supabase Authentication  
+- Interfaz moderna con Tailwind CSS  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2a16dcae-15c6-4a27-a733-c00ce8c5ee12) and start prompting.
+##  Tecnologías utilizadas con lovable  
+- **Frontend:** React, TypeScript, Tailwind CSS  
+- **Backend:** Supabase (Autenticación y Base de Datos)  
+  
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📂 Instalación y ejecución  
+1. Clona el repositorio:  
+   ```sh
+   git clone https://github.com/Fabian2023/sesiontest2.git
+   cd sesiontest2
 
-**Use your preferred IDE**
+2. Instala dependencias:  
+   ```sh
+   npm install
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2a16dcae-15c6-4a27-a733-c00ce8c5ee12) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+3. Inicia el servidor en el puerto 3000:  
+   ```sh
+   npm run dev
