@@ -153,7 +153,7 @@ const AdminDashboard = () => {
         <div>Loading...</div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gray-100 rounded-lg shadow p-6">
+          <div className="bg-gray-300 rounded-lg shadow p-6">
             <h2 className="text-xl font-semibold mb-4">
               Usuarios ({users.length})
             </h2>
@@ -169,7 +169,7 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-gray-100 rounded-lg shadow p-6">
+          <div className="bg-gray-300 rounded-lg shadow p-6">
             <h2 className="text-xl font-semibold mb-4">Invitaciones</h2>
             <div className="mb-6">
               <div className="flex space-x-2 mb-4 ">
