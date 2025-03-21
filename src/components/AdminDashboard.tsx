@@ -196,8 +196,8 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6 md:col-span-2">
-            <h2 className="text-xl font-semibold mb-4">Mensajes</h2>
+          <div className=" rounded-lg shadow bg-gray-300 p-6 md:col-span-2">
+            <h2 className="text-xl font-semibold mb-4 ">Mensajes</h2>
             <div className="mb-6">
               <Textarea
                 value={newMessage}
@@ -210,7 +210,7 @@ const AdminDashboard = () => {
 
             <div className="space-y-4">
               {messages.map((message) => (
-                <div key={message.id} className="border p-3 rounded">
+                <div key={message.id} className="border p-3 rounded bg-white">
                   <p>{message.content}</p>
                   <p className="text-xs text-gray-500">
                     Posted: {new Date(message.created_at).toLocaleString()}
